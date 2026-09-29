@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EduTrack - Academic Project Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 15mm 20mm 15mm;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #ffffff;
+        }
+        .report-title {
+            text-align: center;
+            color: #0366d6;
+            border-bottom: 3px solid #0366d6;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+        .section-title {
+            color: #1a202c;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20px;
+            page-break-after: avoid;
+        }
+        .subsection-title {
+            color: #2d3748;
+            margin-top: 20px;
+            font-size: 16px;
+            page-break-after: avoid;
+        }
+        .code-block {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 14px;
+            overflow-x: auto;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.45;
+            page-break-inside: avoid;
+        }
+        .table-container {
+            margin: 15px 0;
+            overflow-x: auto;
+            page-break-inside: avoid;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .divider {
+            border: 0;
+            border-top: 1px solid #e5e7eb;
+            margin: 25px 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+            }
+            .code-block, table {
+                page-break-inside: avoid;
+            }
+            h2 {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1 class="report-title">PROJECT REPORT: EDUTRACK - ACADEMIC PERFORMANCE &amp; ATTENDANCE MONITORING SYSTEM</h1>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">1. COVER PAGE</h2>
+<br/>
+<pre class="code-block "><code>
+==================================================================================================
+                                    VELLORE INSTITUTE OF TECHNOLOGY
+                           SCHOOL OF COMPUTER SCIENCE AND ENGINEERING (SCOPE)
+                             FLIPPED COURSE EVALUATION PROJECT REPORT
+==================================================================================================
+
+PROJECT TITLE:
+               EDUTRACK: STUDENT ACADEMIC PERFORMANCE &amp; ATTENDANCE MONITORING SYSTEM
+
+COURSE CODE &amp; TITLE:
+               CSE1001 - Problem Solving and Programming with Python
+
+ACADEMIC YEAR:
+               2025 - 2026 (Semester 1)
+
+SUBMITTED BY:
+               Student Name : First Year CSE Student
+               Registration : 24BCE1001 / Batch 2024-2028
+               Program      : B.Tech Computer Science and Engineering
+
+SUPERVISOR / EVALUATOR:
+               Faculty Name : Course Faculty / Program Coordinator
+               School       : SCOPE, VIT
+
+SUBMISSION DATE:
+               September 2026
+==================================================================================================
+</code></pre>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">2. INTRODUCTION</h2>
+<br/>
+<p>In higher education institutions, effective management of student academic progress is essential for both institutional accountability and individual academic success. Students enrolled in rigorous undergraduate degree programs simultaneously navigate diverse course subjects with varying credit structures, continuous internal assessments, and strict administrative regulations.</p>
+<br/>
+<p>Among these regulations, attendance compliance is paramount. At institutions like Vellore Institute of Technology (VIT), students must maintain a mandatory minimum attendance threshold of **75%** in each registered course to be eligible to sit for the End-Semester Examinations (FAT). Failure to reach this threshold results in debarment, leading to academic disruption and grade penalties.</p>
+<br/>
+<p>Traditional mechanisms of manual attendance tracking, disjointed spreadsheets, or delayed portal updates frequently leave students unaware of their actual attendance standing until it is too late to recover. Furthermore, students struggle to estimate their Grade Point Average (GPA) because courses carry diverse credit weightages (1 to 5 credits) and distinct multi-component internal evaluations (Quizzes, Digital Assignments, Continuous Assessment Tests, and Final Exams).</p>
+<br/>
+<p>**EduTrack** is an academic management software platform built using core Python principles. It provides an automated, unified system for students, faculty, and academic advisors to manage course enrollments, monitor attendance deficits, calculate credit-weighted GPAs, and generate institutional analytics.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">3. PROBLEM STATEMENT</h2>
+<br/>
+<p>Managing undergraduate academic performance presents several concrete operational and logistical challenges:</p>
+<br/>
+<p>1. **Absence of Real-Time Attendance Deficit Awareness**: Students often realize they have fallen below the mandatory 75% attendance threshold only toward the conclusion of the semester, when administrative remediation is no longer mathematically viable.</p>
+<p>2. **Lack of Predictive Margin Calculation**: Existing systems report raw attendance percentages but do not inform students how many consecutive upcoming lectures they *must attend* to recover, or conversely, how many classes they can *safely afford to miss* without falling below 75%.</p>
+<p>3. **Complex Credit-Weighted GPA Computation**: Manually calculating Semester Grade Point Averages (SGPA) involves converting multi-assessment scores out of 100 into letter grades (S, A, B, C, D, E, F), mapping them to grade points (10 to 0), and weighting them by course credits. This calculation is prone to manual student error.</p>
+<p>4. **Administrative Overhead for Course Instructors**: Faculty members spend hours tracking attendance shortages across large sections, identifying debarred candidates, and manually compiling performance distribution reports for academic councils.</p>
+<br/>
+<p>**Project Objective**: To propose, design, implement, and validate an automated, modular, and reliable Python system that solves these challenges through clean object-oriented architecture, automated eligibility auditing, robust input validation, and instant report generation.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">4. FUNCTIONAL REQUIREMENTS</h2>
+<br/>
+<p>The EduTrack system is structured into five cohesive functional modules that provide clear input/output workflows:</p>
+<br/>
+<h3 class="subsection-title">Module 1: Student Profile Management</h3>
+<li>**FR 1.1 - Student Registration**: The system shall allow registering a student with Registration Number, Name, Branch, Semester, Email, and Phone.</li>
+<li>**FR 1.2 - Format Validation**: The system shall validate registration numbers using the university format (e.g., `24BCE1001`) and ensure valid email formatting.</li>
+<li>**FR 1.3 - Profile Retrieval &amp; Search**: The system shall retrieve student profiles and support substring searching by registration number or student name.</li>
+<li>**FR 1.4 - Record Updates &amp; Deletion**: The system shall allow authorized updates to student contact information and semester standing, as well as cascading student deletion.</li>
+<br/>
+<h3 class="subsection-title">Module 2: Course Catalog &amp; Enrollment Management</h3>
+<li>**FR 2.1 - Course Offering Creation**: The system shall allow adding courses with Course Code (e.g., `CSE1001`), Title, Credits (1 to 5), Instructor Name, Slot, and Maximum Seat Capacity.</li>
+<li>**FR 2.2 - Seat Enrollment Control**: The system shall enroll students in courses while verifying seat availability against maximum capacity limits.</li>
+<li>**FR 2.3 - Course Drop Workflow**: The system shall allow students to drop courses, automatically updating catalog rosters and recalculating GPA.</li>
+<br/>
+<h3 class="subsection-title">Module 3: Attendance Tracking &amp; 75% Rule Compliance</h3>
+<li>**FR 3.1 - Cumulative &amp; Session Attendance Logging**: The system shall log cumulative attendance counts (attended and total conducted classes) and support single-lecture session roll-call recording.</li>
+<li>**FR 3.2 - Automated Eligibility Determination**: The system shall compute attendance percentage:</li>
+<p>  $$\text{Attendance \%} = \left(\frac{\text{Attended Classes}}{\text{Total Conducted Classes}}\right) \times 100$$</p>
+<p>  and flag any course enrollment $&lt; 75\%$ as **DEBARRED**.</p>
+<li>**FR 3.3 - Predictive Attendance Recovery Advice**: </li>
+<p>  - For debarred students, the system shall compute the minimum consecutive upcoming classes $x$ required to attain $\ge 75\%$:</p>
+<p>    $$x = \max(0, 3 \times \text{Total} - 4 \times \text{Attended})$$</p>
+<p>  - For eligible students, the system shall compute the maximum number of upcoming classes $y$ that can be safely missed:</p>
+<p>    $$y = \max\left(0, \left\lfloor\frac{4 \times \text{Attended} - 3 \times \text{Total}}{3}\right\rfloor\right)$$</p>
+<li>**FR 3.4 - Debarred Roster Generation**: The system shall compile a consolidated registry of all debarred students across all university courses.</li>
+<br/>
+<h3 class="subsection-title">Module 4: Continuous Assessment, Grading &amp; Analytics</h3>
+<li>**FR 4.1 - Multi-Component Mark Entry**: The system shall record evaluation scores across Quiz (Max 10), Assignment (Max 20), Midterm Exam (Max 30), and Final Exam (Max 40).</li>
+<li>**FR 4.2 - 10-Point Scale Letter Grading**: Total score out of 100 is mapped to academic letter grades:</li>
+<p>  - $\ge 90\% \rightarrow \text{S (10 GP)}$</p>
+<p>  - $\ge 80\% \rightarrow \text{A (9 GP)}$</p>
+<p>  - $\ge 70\% \rightarrow \text{B (8 GP)}$</p>
+<p>  - $\ge 60\% \rightarrow \text{C (7 GP)}$</p>
+<p>  - $\ge 50\% \rightarrow \text{D (6 GP)}$</p>
+<p>  - $\ge 40\% \rightarrow \text{E (5 GP)}$</p>
+<p>  - $&lt; 40\% \text{ or Debarred} \rightarrow \text{F (0 GP)}$</p>
+<li>**FR 4.3 - Weighted GPA Computation**: The system shall compute SGPA using course credit weights:</li>
+<p>  $$\text{SGPA} = \frac{\sum_{i=1}^{n} (\text{Grade Point}_i \times \text{Credits}_i)}{\sum_{i=1}^{n} \text{Credits}_i}$$</p>
+<li>**FR 4.4 - Statistical Course Analytics**: For each course, the system shall compute average score, highest mark, lowest mark, overall pass percentage, and a letter grade distribution histogram.</li>
+<li>**FR 4.5 - Dean&#x27;s Honor Roll Leaderboard**: The system shall generate a ranked leaderboard of top academic performers sorted in descending order of GPA.</li>
+<br/>
+<h3 class="subsection-title">Module 5: Data Persistence &amp; Report Generation</h3>
+<li>**FR 5.1 - Safe JSON Persistence**: The system shall automatically serialize all student, course, and faculty entities to JSON using atomic temporary file substitution to prevent data corruption.</li>
+<li>**FR 5.2 - CSV Spreadsheet Export**: The system shall export student GPA summaries (`students_report.csv`) and comprehensive attendance audit records (`attendance_summary.csv`) with a single command.</li>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">5. NON-FUNCTIONAL REQUIREMENTS</h2>
+<br/>
+<div class="table-container"><table>
+<tr><th>NFR Category</th><th>Specification &amp; Strategy</th></tr>
+<tr><td>**1. Performance**</td><td>Sub-second execution for all CRUD queries and GPA calculations. In-memory dictionary indexing guarantees $O(1)$ entity retrieval time complexity. File I/O operations complete in $&lt; 50\text{ ms}$.</td></tr>
+<tr><td>**2. Reliability &amp; Data Integrity**</td><td>Zero data corruption through atomic file replacement patterns. If disk write fails, previous data remains intact. Automatic startup initialization seeds baseline records if no previous database is detected.</td></tr>
+<tr><td>**3. Usability &amp; User Experience**</td><td>Clear menu-driven CLI interface styled with ANSI terminal colors, tabular formatting, and clear guidance. Intuitive prompts with sensible defaults for fast data entry.</td></tr>
+<tr><td>**4. Robust Error Handling**</td><td>Zero unhandled crashes. All input boundary conditions (negative scores, scores $&gt; 100$, invalid registration formats, non-existent entity IDs) are caught by custom exception handlers and displayed with user-friendly error messages.</td></tr>
+<tr><td>**5. Maintainability &amp; Modularity**</td><td>Clean three-tier separation of concerns (Presentation Layer, Service Layer, Domain Model Layer, Storage Layer). Adheres to PEP 8 style standards with type hints and docstrings.</td></tr>
+<tr><td>**6. Portability**</td><td>Runs on any standard Python 3.8+ environment (Windows, macOS, Linux) without requiring external third-party dependencies (`pip install`).</td></tr>
+</table></div>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">6. SYSTEM ARCHITECTURE</h2>
+<br/>
+<p>EduTrack follows a classic **Layered (N-Tier) Architectural Pattern**, ensuring high cohesion and low coupling across modules:</p>
+<br/>
+<pre class="code-block "><code>
++-----------------------------------------------------------------------+
+|                         PRESENTATION LAYER                            |
+|             (edutrack/cli/menu.py &amp; root main.py / demo.py)           |
+|   Interactive Console Menus | ANSI Color Styling | Tabular Formatters |
++-----------------------------------------------------------------------+
+                                  │
+                                  ▼
++-----------------------------------------------------------------------+
+|                         SERVICE / LOGIC LAYER                         |
+|                       (edutrack/services/)                            |
+|  StudentService | CourseService | AttendanceService | AnalyticsService |
++-----------------------------------------------------------------------+
+                                  │
+                                  ▼
++-----------------------------------------------------------------------+
+|                          DOMAIN MODEL LAYER                           |
+|                        (edutrack/models/)                             |
+|       Person (Base) ──► Faculty         Student ──► CourseRecord       |
+|                             Course                                    |
++-----------------------------------------------------------------------+
+                                  │
+                 ┌────────────────┴────────────────┐
+                 ▼                                 ▼
++---------------------------------+  +---------------------------------+
+|      PERSISTENCE LAYER          |  |       UTILITY / VALIDATION      |
+|    (edutrack/storage/)          |  |       (edutrack/utils/)         |
+|  JSON Serializer | CSV Exporter |  | RegEx Validators | Custom Excs  |
++---------------------------------+  +---------------------------------+
+</code></pre>
+<br/>
+<h3 class="subsection-title">Architectural Layer Responsibilities:</h3>
+<p>1. **Presentation Layer (`edutrack/cli/`)**: Handles interactive user inputs, renders formatted tables, catches domain exceptions, and displays color-coded notifications.</p>
+<p>2. **Business Service Layer (`edutrack/services/`)**: Enforces institutional business rules (75% attendance checking, recovery calculation, seat capacity limits, grade point mapping, SGPA calculation).</p>
+<p>3. **Domain Model Layer (`edutrack/models/`)**: Encapsulates core state and object behaviors using OOP inheritance, properties, and serializable methods.</p>
+<p>4. **Storage Layer (`edutrack/storage/`)**: Manages file I/O operations, atomic disk writes, and structured CSV spreadsheet report generation.</p>
+<p>5. **Validation &amp; Utility Layer (`edutrack/utils/`)**: Sanitizes incoming strings, validates regular expression patterns, and defines the custom exception hierarchy.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">7. DESIGN DIAGRAMS</h2>
+<br/>
+<h3 class="subsection-title">7.1 Use Case Diagram</h3>
+<pre class="code-block mermaid"><code>
+flowchart LR
+    StudentActor((&quot;Student User&quot;))
+    FacultyActor((&quot;Faculty / Advisor&quot;))
+
+    subgraph EduTrack_System [&quot;EduTrack Academic Management System&quot;]
+        UC1([&quot;Register / Update Profile&quot;])
+        UC2([&quot;View Academic Transcript &amp; SGPA&quot;])
+        UC3([&quot;View Attendance &amp; Recovery Advice&quot;])
+        UC4([&quot;Manage Course Offerings&quot;])
+        UC5([&quot;Record Session / Cumulative Attendance&quot;])
+        UC6([&quot;Enter / Update Assessment Marks&quot;])
+        UC7([&quot;View Course Analytics &amp; Grade Histograms&quot;])
+        UC8([&quot;Audit Debarred Students List&quot;])
+        UC9([&quot;Export Reports to CSV&quot;])
+    end
+
+    StudentActor --&gt; UC2
+    StudentActor --&gt; UC3
+    FacultyActor --&gt; UC1
+    FacultyActor --&gt; UC4
+    FacultyActor --&gt; UC5
+    FacultyActor --&gt; UC6
+    FacultyActor --&gt; UC7
+    FacultyActor --&gt; UC8
+    FacultyActor --&gt; UC9
+</code></pre>
+<br/>
+<h3 class="subsection-title">7.2 Process Flow / Workflow Diagram (Attendance Audit &amp; 75% Rule Engine)</h3>
+<pre class="code-block mermaid"><code>
+flowchart TD
+    Start([Start Attendance Audit]) --&gt; FetchRec[Fetch Student Course Enrollment]
+    FetchRec --&gt; CalcPct[&quot;Compute Attendance % = (Attended / Total) * 100&quot;]
+    CalcPct --&gt; Check75{&quot;Is Attendance &gt;= 75%?&quot;}
+
+    Check75 -- Yes --&gt; EligibleStatus[&quot;Status = ELIGIBLE&quot;]
+    EligibleStatus --&gt; CalcMargin[&quot;Compute Safe Margin: floor((4*Att - 3*Tot)/3)&quot;]
+    CalcMargin --&gt; DisplaySafe[&quot;Display: Safe to miss &#x27;y&#x27; upcoming classes&quot;]
+
+    Check75 -- No --&gt; DebarredStatus[&quot;Status = DEBARRED (&lt;75%)&quot;]
+    DebarredStatus --&gt; CalcNeeded[&quot;Compute Classes Needed: max(0, 3*Tot - 4*Att)&quot;]
+    DebarredStatus --&gt; OverrideGrade[&quot;Lock Letter Grade = &#x27;F (Debarred)&#x27;, Grade Point = 0&quot;]
+    CalcNeeded --&gt; DisplayAlert[&quot;Display Alert: Must attend &#x27;x&#x27; consecutive classes&quot;]
+
+    DisplaySafe --&gt; End([End Workflow])
+    DisplayAlert --&gt; End
+</code></pre>
+<br/>
+<h3 class="subsection-title">7.3 Sequence Diagram (Mark Recording &amp; GPA Calculation Workflow)</h3>
+<pre class="code-block mermaid"><code>
+sequenceDiagram
+    autonumber
+    actor Faculty as Course Instructor
+    participant CLI as EduTrack CLI
+    participant Analytics as AnalyticsService
+    participant Student as Student Model
+    participant Record as CourseRecord Model
+    participant Storage as DataStorage
+
+    Faculty-&gt;&gt;CLI: Select Option: Record Marks (RegNo, CourseCode, Scores)
+    CLI-&gt;&gt;Analytics: record_student_marks(reg_no, course_code, quiz, asgn, mid, final)
+    Analytics-&gt;&gt;Analytics: validate_score() boundaries
+    Analytics-&gt;&gt;Student: update_marks(course_code, marks_dict)
+    Student-&gt;&gt;Record: update internal assessment scores
+    Record--&gt;&gt;Student: Updated
+    Analytics--&gt;&gt;CLI: Return updated marks
+    CLI-&gt;&gt;Storage: save_data(students, courses, faculty)
+    Storage--&gt;&gt;CLI: State saved atomically
+    CLI--&gt;&gt;Faculty: Display &quot;[Success] Marks updated successfully!&quot;
+
+    Faculty-&gt;&gt;CLI: Request Student Transcript
+    CLI-&gt;&gt;Analytics: generate_student_transcript(reg_no)
+    Analytics-&gt;&gt;Student: calculate_gpa(courses_catalog)
+    Student-&gt;&gt;Record: compute total_score and grade_point
+    Record--&gt;&gt;Student: grade_points
+    Student--&gt;&gt;Analytics: Return weighted SGPA
+    Analytics--&gt;&gt;CLI: Return Transcript payload
+    CLI--&gt;&gt;Faculty: Print formatted Academic Transcript &amp; SGPA
+</code></pre>
+<br/>
+<h3 class="subsection-title">7.4 Class / Component Diagram</h3>
+<pre class="code-block mermaid"><code>
+classDiagram
+    class Person {
+        -str _name
+        -str _email
+        -str _phone
+        +name() str
+        +email() str
+        +phone() str
+        +get_role() str
+        +to_dict() dict
+    }
+
+    class Faculty {
+        +str emp_id
+        +str department
+        +get_role() str
+        +to_dict() dict
+        +from_dict(data) Faculty
+    }
+
+    class Student {
+        +str reg_no
+        +str branch
+        +int semester
+        +dict courses
+        +get_role() str
+        +enroll(course_code)
+        +drop(course_code) bool
+        +update_attendance(code, attended, total)
+        +update_marks(code, quiz, asgn, mid, final)
+        +calculate_gpa(catalog) float
+        +to_dict() dict
+        +from_dict(data) Student
+    }
+
+    class CourseRecord {
+        +str course_code
+        +int attended_classes
+        +int total_classes
+        +dict marks
+        +attendance_percentage() float
+        +is_attendance_debarred() bool
+        +attendance_advice() str
+        +total_score() float
+        +grade_letter() str
+        +grade_point() int
+        +status() str
+        +to_dict() dict
+        +from_dict(data) CourseRecord
+    }
+
+    class Course {
+        +str code
+        +str title
+        +int credits
+        +str faculty_name
+        +str slot
+        +int max_capacity
+        +to_dict() dict
+        +from_dict(data) Course
+    }
+
+    Person &lt;|-- Faculty
+    Person &lt;|-- Student
+    Student &quot;1&quot; *-- &quot;many&quot; CourseRecord : contains
+    CourseRecord ..&gt; Course : references
+</code></pre>
+<br/>
+<h3 class="subsection-title">7.5 Database &amp; Storage Design (ER / Schema Diagram)</h3>
+<pre class="code-block "><code>
++-----------------------------------------------------------------------------------+
+|                                  STUDENTS TABLE                                   |
++---------------------+-------------------+-----------------------------------------+
+| Column Name         | Data Type         | Constraints &amp; Notes                     |
++---------------------+-------------------+-----------------------------------------+
+| reg_no (PK)         | VARCHAR(12)       | Unique, Format: ^[0-9]{2}[A-Z]{2,4}[0-9]{3,5}$
+| name                | VARCHAR(100)      | Not Null                                |
+| email               | VARCHAR(100)      | Unique, Valid Email                     |
+| branch              | VARCHAR(10)       | Not Null (e.g., BCE, BME)               |
+| semester            | INTEGER           | Range: 1 - 8                            |
+| phone               | VARCHAR(15)       | Optional                                |
++---------------------+-------------------+-----------------------------------------+
+                                         │ 1
+                                         │
+                                         ▼ N
++-----------------------------------------------------------------------------------+
+|                              COURSE_RECORDS TABLE                                 |
++---------------------+-------------------+-----------------------------------------+
+| Column Name         | Data Type         | Constraints &amp; Notes                     |
++---------------------+-------------------+-----------------------------------------+
+| student_reg (FK)    | VARCHAR(12)       | References STUDENTS(reg_no)             |
+| course_code (FK)    | VARCHAR(10)       | References COURSES(code)                |
+| attended_classes    | INTEGER           | Default 0, Attended &lt;= Total            |
+| total_classes       | INTEGER           | Default 0                               |
+| quiz_score          | REAL              | Range: 0.0 - 10.0                       |
+| assignment_score    | REAL              | Range: 0.0 - 20.0                       |
+| midterm_score       | REAL              | Range: 0.0 - 30.0                       |
+| final_score         | REAL              | Range: 0.0 - 40.0                       |
++---------------------+-------------------+-----------------------------------------+
+                                         ▲ N
+                                         │
+                                         │ 1
++-----------------------------------------------------------------------------------+
+|                                   COURSES TABLE                                   |
++---------------------+-------------------+-----------------------------------------+
+| Column Name         | Data Type         | Constraints &amp; Notes                     |
++---------------------+-------------------+-----------------------------------------+
+| code (PK)           | VARCHAR(10)       | Unique, Format: ^[A-Z]{3,4}[0-9]{4}$    |
+| title               | VARCHAR(150)      | Not Null                                |
+| credits             | INTEGER           | Range: 1 - 5                            |
+| faculty_name        | VARCHAR(100)      | Default &#x27;TBA&#x27;                           |
+| slot                | VARCHAR(15)       | e.g., &#x27;A1+TA1&#x27;                          |
+| max_capacity        | INTEGER           | Default 60                              |
++---------------------+-------------------+-----------------------------------------+
+</code></pre>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">8. DESIGN DECISIONS &amp; RATIONALE</h2>
+<br/>
+<p>1. **Object-Oriented Programming (OOP) Hierarchy**:</p>
+<p>   - *Decision*: Created a base `Person` class inherited by `Student` and `Faculty`.</p>
+<p>   - *Rationale*: Models real-world university taxonomy. Eliminates duplicate attributes (`name`, `email`, `phone`), demonstrates encapsulation and polymorphism, and makes future extensions (e.g., `TeachingAssistant`, `Staff`) straightforward.</p>
+<br/>
+<p>2. **Inverted Attendance Debarment Penalty in GPA Calculation**:</p>
+<p>   - *Decision*: If a student&#x27;s attendance in a course falls below 75%, their letter grade is automatically overridden to `F (Debarred)` with 0 grade points, regardless of their assessment marks.</p>
+<p>   - *Rationale*: Strictly aligns with university academic regulations where debarred students are disqualified from course credits.</p>
+<br/>
+<p>3. **Pure Python Standard Library (Zero External Dependencies)**:</p>
+<p>   - *Decision*: Built the application using built-in modules (`json`, `csv`, `re`, `pathlib`, `unittest`) without requiring external packages like `pandas`, `tabulate`, or `colorama`.</p>
+<p>   - *Rationale*: Guarantees 100% out-of-the-box execution on any evaluator&#x27;s computer across Windows, Mac, or Linux without environment dependency conflicts or installation failures.</p>
+<br/>
+<p>4. **Atomic JSON File Storage with Temp File Swap**:</p>
+<p>   - *Decision*: Application state is written to a temporary `.tmp` file first, which then atomically replaces the main `edutrack_data.json` file.</p>
+<p>   - *Rationale*: Prevents database corruption or truncated files in the event of sudden power loss or process interruption during writes.</p>
+<br/>
+<p>5. **Analytical Margin Forecasting Mathematical Derivation**:</p>
+<p>   - *Classes needed for recovery*:</p>
+<p>     $$\frac{\text{Attended} + x}{\text{Total} + x} \ge 0.75 \implies x \ge 3 \times \text{Total} - 4 \times \text{Attended}$$</p>
+<p>   - *Classes can miss safely*:</p>
+<p>     $$\frac{\text{Attended}}{\text{Total} + y} \ge 0.75 \implies y \le \frac{4 \times \text{Attended} - 3 \times \text{Total}}{3}$$</p>
+<p>   - *Rationale*: Replaces vague warnings with exact, mathematically derived figures that give students actionable recovery targets.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">9. IMPLEMENTATION DETAILS</h2>
+<br/>
+<p>EduTrack is implemented across **12 clean Python modules** organized into logical packages:</p>
+<br/>
+<li>**`edutrack/config.py`**: Declares academic constants (75% minimum threshold, 10-point grade scale tuples, assessment maximum scores, and data paths).</li>
+<li>**`edutrack/models/`**:</li>
+<p>  - `person.py`: Implements `Person` and `Faculty` classes with getters/setters and dictionary serialization.</p>
+<p>  - `course.py`: Implements `Course` class holding metadata, credits, slots, and seat capacities.</p>
+<p>  - `student.py`: Implements `Student` and `CourseRecord` classes. Handles attendance computation, advice generation, score aggregation, and weighted GPA math.</p>
+<li>**`edutrack/services/`**:</li>
+<p>  - `student_service.py`: Implements business operations for adding, updating, finding, and deleting students with duplicate guards.</p>
+<p>  - `course_service.py`: Implements course catalog operations and seat-capacity-checked enrollments.</p>
+<p>  - `attendance_service.py`: Handles session and cumulative attendance logging, debarred student filtering, and status auditing.</p>
+<p>  - `analytics_service.py`: Records internal assessment scores, compiles complete student transcripts, and calculates course-wide statistics.</p>
+<li>**`edutrack/storage/file_storage.py`**: Manages JSON serialization/deserialization and formats exports for `students_report.csv` and `attendance_summary.csv`.</li>
+<li>**`edutrack/utils/`**:</li>
+<p>  - `validators.py`: Employs regex to enforce valid Registration Numbers (`24BCE1001`), course codes (`CSE1001`), emails, and score ranges.</p>
+<p>  - `exceptions.py`: Defines domain-specific exception classes (`ValidationError`, `StudentNotFoundError`, `CourseNotFoundError`, `DuplicateRecordError`, `AttendanceRecordError`, `InvalidScoreError`).</p>
+<li>**`edutrack/cli/menu.py`**: Formats interactive terminal screens, tables, color escape sequences, and user input validation loops.</li>
+<li>**`main.py` &amp; `demo.py`**: Provide the primary interactive entry point and automated headless verification runner respectively.</li>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">10. SCREENSHOTS &amp; RESULTS</h2>
+<br/>
+<h3 class="subsection-title">10.1 CLI Main Menu</h3>
+<pre class="code-block text"><code>
+=================================================================
+       EDUTRACK - ACADEMIC &amp; ATTENDANCE MANAGEMENT SYSTEM
+        Empowering Student Success &amp; Institutional Insights
+=================================================================
+ Registered Students: 6 | Active Courses: 4
+=================================================================
+1. Student Management (Add, View, Update, Delete)
+2. Course Catalog &amp; Enrollments
+3. Attendance Tracking &amp; 75% Rule Compliance
+4. Academic Marks, GPA &amp; Performance Analytics
+5. Export Reports &amp; Data Management (CSV Export)
+0. Save &amp; Exit
+-----------------------------------------------------------------
+Select an option [0-5]:
+</code></pre>
+<br/>
+<h3 class="subsection-title">10.2 Student Academic Transcript &amp; Weighted SGPA</h3>
+<pre class="code-block text"><code>
+==========================================================================================
+ACADEMIC TRANSCRIPT: Aarav Sharma (24BCE1001)
+Branch: BCE | Semester: 1 | Total Credits: 11
+==========================================================================================
+Course     | Title                     | Cr  | Quiz  | Asgn  | Mid   | Fin   | Tot   | Att%   | Grd  | Status
+------------------------------------------------------------------------------------------
+CSE1001    | Problem Solving and Progr | 4   | 9.5   | 19.0  | 28.0  | 38.0  | 94.5  | 93.3   | S    | PASS
+MAT1001    | Calculus and Linear Algeb | 4   | 8.5   | 18.0  | 26.0  | 35.0  | 87.5  | 90.0   | A    | PASS
+PHY1001    | Engineering Physics       | 3   | 9.0   | 17.5  | 27.0  | 36.0  | 89.5  | 91.7   | A    | PASS
+==========================================================================================
+SEMESTER GRADE POINT AVERAGE (SGPA): 9.36 / 10.00
+==========================================================================================
+</code></pre>
+<br/>
+<h3 class="subsection-title">10.3 Attendance Audit with Predictive Margin Advice</h3>
+<pre class="code-block text"><code>
+================================================================================
+ATTENDANCE AUDIT FOR STUDENT: 24BCE1003 (Rohan Verma)
+================================================================================
+Course: CSE1001 | Attended: 20/30 (66.67%) | Status: DEBARRED (&lt;75%)
+  Advice: CRITICAL: Below 75%! Must attend next 10 consecutive class(es) to regain eligibility.
+--------------------------------------------------------------------------------
+Course: PHY1001 | Attended: 20/24 (83.33%) | Status: ELIGIBLE
+  Advice: Safe (83.33%). You can afford to miss up to 2 upcoming class(es) safely.
+--------------------------------------------------------------------------------
+</code></pre>
+<br/>
+<h3 class="subsection-title">10.4 Course Statistical Analytics Report</h3>
+<pre class="code-block text"><code>
+============================================================
+ANALYTICS REPORT: CSE1001 - Problem Solving and Programming with Python
+============================================================
+Enrolled Students : 5
+Average Score     : 87.1 / 100
+Highest Score     : 98.0 / 100
+Lowest Score      : 74.0 / 100
+Passing Rate      : 80.0%
+------------------------------------------------------------
+Grade Distribution Breakdown:
+  Grade S           : 2   ██
+  Grade A           : 1   █
+  Grade B           : 1   █
+  Grade C           : 0   
+  Grade D           : 0   
+  Grade E           : 0   
+  Grade F           : 0   
+  Grade F (Debarred): 1   █
+============================================================
+</code></pre>
+<br/>
+<h3 class="subsection-title">10.5 Top Rankers Leaderboard (Dean&#x27;s Honor Roll)</h3>
+<pre class="code-block text"><code>
+=================================================================
+TOP PERFORMERS LEADERBOARD (DEAN&#x27;S HONOR ROLL)
+=================================================================
+Rank  | Reg No         | Name                   | Branch   | GPA  
+-----------------------------------------------------------------
+🥇 #1 | 24BCE1004      | Sneha Iyer             | BCE      | 9.77 
+🥈 #2 | 24BCE1001      | Aarav Sharma           | BCE      | 9.36 
+🥉 #3 | 24BCE1002      | Diya Patel             | BCE      | 7.50 
+#4    | 24BCE1005      | Vikram Nair            | BCE      | 4.60 
+#5    | 24BCE1099      | Karan Malhotra         | BCE      | 4.50 
+=================================================================
+</code></pre>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">11. TESTING APPROACH</h2>
+<br/>
+<p>The project incorporates test-driven validation using Python&#x27;s built-in `unittest` framework. Tests are partitioned into three dedicated test suites covering domain models, business logic services, and validation boundaries.</p>
+<br/>
+<h3 class="subsection-title">Unit Test Execution Matrix</h3>
+<br/>
+<div class="table-container"><table>
+<tr><th>Test Suite File</th><th>Test Function Name</th><th>Tested Scenario</th><th>Expected Outcome</th><th>Status</th></tr>
+<tr><td>`test_models.py`</td><td>`test_person_and_faculty_inheritance`</td><td>Inheritance &amp; polymorphic role call</td><td>Correct child attributes &amp; role override</td><td>**PASS**</td></tr>
+<tr><td>`test_models.py`</td><td>`test_course_creation_and_serialization`</td><td>Serialization &amp; reconstruction</td><td>Unaltered attributes round-trip</td><td>**PASS**</td></tr>
+<tr><td>`test_models.py`</td><td>`test_course_record_attendance_and_grades`</td><td>Attendance $&lt; 75\%$ debarment trigger</td><td>Grade overridden to F (Debarred), GP = 0</td><td>**PASS**</td></tr>
+<tr><td>`test_models.py`</td><td>`test_student_gpa_calculation`</td><td>Multi-course credit-weighted SGPA</td><td>Exact formula calculation $(9.50)$</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_valid_reg_no`</td><td>Valid formats (`24bce1001`, `23BCSE045`)</td><td>Normalized uppercase string returned</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_invalid_reg_no`</td><td>Malformed strings (`INVALID123`, `241001`)</td><td>`ValidationError` raised</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_valid_email`</td><td>Standard university email addresses</td><td>Normalized lowercase email string</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_invalid_email`</td><td>String lacking domain/tld (`not-an-email`)</td><td>`ValidationError` raised</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_course_code_validation`</td><td>Valid vs short course codes (`CS1`)</td><td>`ValidationError` raised for short codes</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_score_boundaries`</td><td>Boundary values ($25.5$, $&gt;30$, $&lt;0$)</td><td>Strict bounds enforced, error on $&gt;30$</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_credits_boundaries`</td><td>Valid $1-5$ range, zero or $&gt;5$</td><td>Out of range credits rejected</td><td>**PASS**</td></tr>
+<tr><td>`test_validators.py`</td><td>`test_non_empty_string`</td><td>Whitespace-only string input</td><td>Rejection with field-specific message</td><td>**PASS**</td></tr>
+<tr><td>`test_services.py`</td><td>`test_student_crud_operations`</td><td>Add, fetch, search, update, delete</td><td>Full CRUD lifecycle validated</td><td>**PASS**</td></tr>
+<tr><td>`test_services.py`</td><td>`test_course_enrollment_and_drop`</td><td>Course enrollment and drop logic</td><td>Roster properly modified and synced</td><td>**PASS**</td></tr>
+<tr><td>`test_services.py`</td><td>`test_attendance_logging_and_debarment`</td><td>Attended $&gt;$ total check &amp; debarment</td><td>`AttendanceRecordError` on impossible counts</td><td>**PASS**</td></tr>
+<tr><td>`test_services.py`</td><td>`test_analytics_and_transcript_generation`</td><td>Score entry &amp; transcript creation</td><td>Full transcript with correct SGPA</td><td>**PASS**</td></tr>
+</table></div>
+<br/>
+<h3 class="subsection-title">Automated Test Runner Execution Output</h3>
+<pre class="code-block text"><code>
+======================================================================
+Running 16 Automated Test Cases across tests/
+----------------------------------------------------------------------
+................
+----------------------------------------------------------------------
+Ran 16 tests in 0.002s
+
+OK (100% Passing Rate)
+======================================================================
+</code></pre>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">12. CHALLENGES FACED</h2>
+<br/>
+<p>1. **Handling Edge Cases in Attendance Recovery Math**:</p>
+<p>   - *Challenge*: Early in the term, total conducted classes can be zero. Standard division causes a `ZeroDivisionError`. Furthermore, integer division rounding could produce inaccurate advice.</p>
+<p>   - *Resolution*: Implemented a protective condition in `attendance_percentage` returning $100\%$ when total classes equal zero. Derived and tested closed-form linear algebra formulas for both recovery and margin calculations.</p>
+<br/>
+<p>2. **Cascading Entity Deletions**:</p>
+<p>   - *Challenge*: Deleting a course while students were enrolled created dangling course code keys in student profiles, causing missing course reference errors during subsequent GPA calculations.</p>
+<p>   - *Resolution*: Implemented cascading cleanup in `CourseService.delete_course()`, iterating through all active student records to safely drop the deleted course code before deleting it from the course catalog.</p>
+<br/>
+<p>3. **Data Loss Prevention Without Database Servers**:</p>
+<p>   - *Challenge*: When writing directly to a JSON file, unexpected termination can truncate the file and destroy institutional data.</p>
+<p>   - *Resolution*: Adopted an atomic write pattern in `DataStorage.save_data()`: serializing to a `.tmp` file first and executing an atomic replacement upon successful write.</p>
+<br/>
+<p>4. **Multi-Platform Terminal Formatting**:</p>
+<p>   - *Challenge*: Different operating systems handle ANSI color escape codes differently.</p>
+<p>   - *Resolution*: Designed clean text wrappers with standard text fallbacks, ensuring output remains legible even on non-ANSI terminals.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">13. LEARNINGS &amp; KEY TAKEAWAYS</h2>
+<br/>
+<p>1. **Applied Object-Oriented Design in Python**:</p>
+<p>   - Learned how inheritance (`Person` $\rightarrow$ `Student`) reduces code duplication, while encapsulating internal state using `@property` decorators provides clean attribute protection.</p>
+<p>2. **Separation of Concerns (Layered Architecture)**:</p>
+<p>   - Separating presentation (CLI) from business logic (Services) and persistence (Storage) enabled writing automated unit tests without launching the interactive CLI.</p>
+<p>3. **Defensive Programming &amp; Custom Exception Hierarchies**:</p>
+<p>   - Moving from generic Python errors to domain-specific exceptions (`StudentNotFoundError`, `AttendanceRecordError`) significantly improved code clarity and error recovery.</p>
+<p>4. **Data Structures &amp; Computational Efficiency**:</p>
+<p>   - Utilizing hash maps (Python dictionaries) keyed by unique registration numbers and course codes enabled $O(1)$ lookups, ensuring fast performance even as dataset size grows.</p>
+<p>5. **Software Engineering Quality &amp; Documentation**:</p>
+<p>   - Gained hands-on experience structuring a complete, professional GitHub repository with automated test suites, documentation, and design specifications matching industry and academic rubrics.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">14. FUTURE ENHANCEMENTS</h2>
+<br/>
+<p>1. **Graphical User Interface (GUI) &amp; Web Dashboard**:</p>
+<p>   - Implement a lightweight desktop GUI using Python&#x27;s built-in `tkinter` or a responsive web dashboard using `Streamlit` or `Flask`.</p>
+<p>2. **Relational Database Backend**:</p>
+<p>   - Transition from JSON flat files to `SQLite` using Python&#x27;s built-in `sqlite3` module to support ACID transactions and SQL queries.</p>
+<p>3. **Automated Email / SMS Debarment Alerts**:</p>
+<p>   - Integrate Python&#x27;s `smtplib` to automatically dispatch warning emails to students and their faculty advisors when attendance dips below 80%.</p>
+<p>4. **Biometric &amp; RFID Attendance Integration**:</p>
+<p>   - Support hardware inputs (RFID card readers, QR code scanners) to automate session attendance recording in real time.</p>
+<p>5. **Predictive Machine Learning GPA Forecasting**:</p>
+<p>   - Apply Scikit-learn regression models to forecast final course letter grades based on continuous internal assessment patterns and attendance trends.</p>
+<br/>
+<hr class="divider"/>
+<br/>
+<h2 class="section-title">15. REFERENCES</h2>
+<br/>
+<p>1. Lutz, Mark. *Learning Python: Powerful Object-Oriented Programming (5th Edition)*. O&#x27;Reilly Media, 2013.</p>
+<p>2. Python Software Foundation. *Python 3.12 Documentation: Standard Library (re, json, csv, unittest)*. https://docs.python.org/3/</p>
+<p>3. Vellore Institute of Technology. *Academic Regulations &amp; Course Guidelines for B.Tech Degree Programs*. VIT University, 2024.</p>
+<p>4. Gamma, Erich, et al. *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley, 1994.</p>
+<p>5. Martin, Robert C. *Clean Code: A Handbook of Agile Software Craftsmanship*. Prentice Hall, 2008.</p>
+<p>6. Fowler, Martin. *UML Distilled: A Brief Guide to the Standard Object Modeling Language (3rd Edition)*. Addison-Wesley, 2003.</p>
+<br/>
+<p>==================================================================================================</p>
+<p>                                       END OF PROJECT REPORT</p>
+<p>==================================================================================================</p>
+</body>
+</html>

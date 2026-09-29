@@ -1,0 +1,295 @@
+{
+  "students": {
+    "24BCE1001": {
+      "name": "Aarav Sharma",
+      "email": "aarav.s2024@vitstudent.ac.in",
+      "phone": "9876543210",
+      "role": "Student",
+      "reg_no": "24BCE1001",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "CSE1001": {
+          "course_code": "CSE1001",
+          "attended_classes": 28,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 9.5,
+            "assignment": 19.0,
+            "midterm": 28.0,
+            "final": 38.0
+          }
+        },
+        "MAT1001": {
+          "course_code": "MAT1001",
+          "attended_classes": 27,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 8.5,
+            "assignment": 18.0,
+            "midterm": 26.0,
+            "final": 35.0
+          }
+        },
+        "PHY1001": {
+          "course_code": "PHY1001",
+          "attended_classes": 22,
+          "total_classes": 24,
+          "marks": {
+            "quiz": 9.0,
+            "assignment": 17.5,
+            "midterm": 27.0,
+            "final": 36.0
+          }
+        }
+      }
+    },
+    "24BCE1002": {
+      "name": "Diya Patel",
+      "email": "diya.p2024@vitstudent.ac.in",
+      "phone": "9876543211",
+      "role": "Student",
+      "reg_no": "24BCE1002",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "CSE1001": {
+          "course_code": "CSE1001",
+          "attended_classes": 24,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 7.0,
+            "assignment": 15.0,
+            "midterm": 22.0,
+            "final": 30.0
+          }
+        },
+        "MAT1001": {
+          "course_code": "MAT1001",
+          "attended_classes": 23,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 6.5,
+            "assignment": 14.0,
+            "midterm": 20.0,
+            "final": 28.0
+          }
+        }
+      }
+    },
+    "24BCE1003": {
+      "name": "Rohan Verma",
+      "email": "rohan.v2024@vitstudent.ac.in",
+      "phone": "9876543212",
+      "role": "Student",
+      "reg_no": "24BCE1003",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "CSE1001": {
+          "course_code": "CSE1001",
+          "attended_classes": 20,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 8.0,
+            "assignment": 16.0,
+            "midterm": 24.0,
+            "final": 32.0
+          }
+        },
+        "PHY1001": {
+          "course_code": "PHY1001",
+          "attended_classes": 20,
+          "total_classes": 24,
+          "marks": {
+            "quiz": 7.5,
+            "assignment": 15.0,
+            "midterm": 21.0,
+            "final": 29.0
+          }
+        }
+      }
+    },
+    "24BCE1004": {
+      "name": "Sneha Iyer",
+      "email": "sneha.i2024@vitstudent.ac.in",
+      "phone": "9876543213",
+      "role": "Student",
+      "reg_no": "24BCE1004",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "CSE1001": {
+          "course_code": "CSE1001",
+          "attended_classes": 29,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 10.0,
+            "assignment": 20.0,
+            "midterm": 29.0,
+            "final": 39.0
+          }
+        },
+        "MAT1001": {
+          "course_code": "MAT1001",
+          "attended_classes": 28,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 9.0,
+            "assignment": 19.0,
+            "midterm": 27.5,
+            "final": 37.0
+          }
+        },
+        "PHY1001": {
+          "course_code": "PHY1001",
+          "attended_classes": 23,
+          "total_classes": 24,
+          "marks": {
+            "quiz": 8.5,
+            "assignment": 18.0,
+            "midterm": 26.0,
+            "final": 36.0
+          }
+        },
+        "ENG1001": {
+          "course_code": "ENG1001",
+          "attended_classes": 18,
+          "total_classes": 20,
+          "marks": {
+            "quiz": 9.0,
+            "assignment": 18.5,
+            "midterm": 28.0,
+            "final": 37.0
+          }
+        }
+      }
+    },
+    "24BCE1005": {
+      "name": "Vikram Nair",
+      "email": "vikram.n2024@vitstudent.ac.in",
+      "phone": "9876543214",
+      "role": "Student",
+      "reg_no": "24BCE1005",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "MAT1001": {
+          "course_code": "MAT1001",
+          "attended_classes": 22,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 5.0,
+            "assignment": 12.0,
+            "midterm": 16.0,
+            "final": 22.0
+          }
+        },
+        "ENG1001": {
+          "course_code": "ENG1001",
+          "attended_classes": 16,
+          "total_classes": 20,
+          "marks": {
+            "quiz": 7.0,
+            "assignment": 14.0,
+            "midterm": 22.0,
+            "final": 28.0
+          }
+        }
+      }
+    },
+    "24BCE1099": {
+      "name": "Karan Malhotra",
+      "email": "karan.m2024@vitstudent.ac.in",
+      "phone": "9876543299",
+      "role": "Student",
+      "reg_no": "24BCE1099",
+      "branch": "BCE",
+      "semester": 1,
+      "courses": {
+        "CSE1001": {
+          "course_code": "CSE1001",
+          "attended_classes": 26,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 9.0,
+            "assignment": 18.0,
+            "midterm": 26.0,
+            "final": 36.0
+          }
+        },
+        "MAT1001": {
+          "course_code": "MAT1001",
+          "attended_classes": 21,
+          "total_classes": 30,
+          "marks": {
+            "quiz": 8.0,
+            "assignment": 16.0,
+            "midterm": 22.0,
+            "final": 30.0
+          }
+        }
+      }
+    }
+  },
+  "courses": {
+    "CSE1001": {
+      "code": "CSE1001",
+      "title": "Problem Solving and Programming with Python",
+      "credits": 4,
+      "faculty_name": "Dr. Ramesh Kumar",
+      "slot": "A1+TA1",
+      "max_capacity": 60
+    },
+    "MAT1001": {
+      "code": "MAT1001",
+      "title": "Calculus and Linear Algebra",
+      "credits": 4,
+      "faculty_name": "Prof. Ananya Sen",
+      "slot": "B1+TB1",
+      "max_capacity": 60
+    },
+    "PHY1001": {
+      "code": "PHY1001",
+      "title": "Engineering Physics",
+      "credits": 3,
+      "faculty_name": "Dr. Priya Sundaram",
+      "slot": "C1+TC1",
+      "max_capacity": 50
+    },
+    "ENG1001": {
+      "code": "ENG1001",
+      "title": "Technical English Communication",
+      "credits": 2,
+      "faculty_name": "Dr. Ramesh Kumar",
+      "slot": "D1",
+      "max_capacity": 40
+    }
+  },
+  "faculty": {
+    "FAC101": {
+      "name": "Dr. Ramesh Kumar",
+      "email": "ramesh.k@vit.ac.in",
+      "phone": "",
+      "role": "Faculty",
+      "emp_id": "FAC101",
+      "department": "Computer Science"
+    },
+    "FAC102": {
+      "name": "Prof. Ananya Sen",
+      "email": "ananya.s@vit.ac.in",
+      "phone": "",
+      "role": "Faculty",
+      "emp_id": "FAC102",
+      "department": "Mathematics"
+    },
+    "FAC103": {
+      "name": "Dr. Priya Sundaram",
+      "email": "priya.s@vit.ac.in",
+      "phone": "",
+      "role": "Faculty",
+      "emp_id": "FAC103",
+      "department": "Physics"
+    }
+  }
+}
