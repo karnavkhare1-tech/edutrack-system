@@ -12,6 +12,7 @@ from ..storage import DataStorage
 from ..utils.exceptions import EduTrackException
 from ..data_seed import generate_seed_data
 from ..config import MIN_ATTENDANCE_PERCENTAGE
+from .. import __version__
 
 
 class Colors:
@@ -110,7 +111,7 @@ class EduTrackCLI:
 
     def _print_header(self):
         print("\n" + "=" * 65)
-        print(styled("       EDUTRACK - ACADEMIC & ATTENDANCE MANAGEMENT SYSTEM", Colors.CYAN + Colors.BOLD))
+        print(styled(f"    EDUTRACK v{__version__} - ACADEMIC & ATTENDANCE MANAGEMENT SYSTEM", Colors.CYAN + Colors.BOLD))
         print(styled("        Empowering Student Success & Institutional Insights", Colors.YELLOW))
         print("=" * 65)
         print(f" Registered Students: {len(self.students)} | Active Courses: {len(self.courses)}")
@@ -152,7 +153,7 @@ class EduTrackCLI:
 
     def _action_add_student(self):
         print("\n--- Register New Student ---")
-        reg_no = input("Registration Number (e.g. 24BCE1006): ")
+        reg_no = input("Registration Number (e.g. 26BCE1006): ")
         name = input("Student Full Name: ")
         email = input("Email Address: ")
         branch = input("Branch/Specialization (e.g. BCE, BME): ")

@@ -22,7 +22,7 @@ ACADEMIC YEAR:
 
 SUBMITTED BY:
                Student Name : First Year CSE Student
-               Registration : 24BCE1001 / Batch 2024-2028
+               Registration : 26BCE1001 / Batch 2026-2030
                Program      : B.Tech Computer Science and Engineering
 
 SUPERVISOR / EVALUATOR:
@@ -67,7 +67,7 @@ The EduTrack system is structured into five cohesive functional modules that pro
 
 ### Module 1: Student Profile Management
 - **FR 1.1 - Student Registration**: The system shall allow registering a student with Registration Number, Name, Branch, Semester, Email, and Phone.
-- **FR 1.2 - Format Validation**: The system shall validate registration numbers using the university format (e.g., `24BCE1001`) and ensure valid email formatting.
+- **FR 1.2 - Format Validation**: The system shall validate registration numbers using the university format (e.g., `26BCE1001`) and ensure valid email formatting.
 - **FR 1.3 - Profile Retrieval & Search**: The system shall retrieve student profiles and support substring searching by registration number or student name.
 - **FR 1.4 - Record Updates & Deletion**: The system shall allow authorized updates to student contact information and semester standing, as well as cascading student deletion.
 
@@ -412,7 +412,7 @@ EduTrack is implemented across **12 clean Python modules** organized into logica
   - `analytics_service.py`: Records internal assessment scores, compiles complete student transcripts, and calculates course-wide statistics.
 - **`edutrack/storage/file_storage.py`**: Manages JSON serialization/deserialization and formats exports for `students_report.csv` and `attendance_summary.csv`.
 - **`edutrack/utils/`**:
-  - `validators.py`: Employs regex to enforce valid Registration Numbers (`24BCE1001`), course codes (`CSE1001`), emails, and score ranges.
+  - `validators.py`: Employs regex to enforce valid Registration Numbers (`26BCE1001`), course codes (`CSE1001`), emails, and score ranges.
   - `exceptions.py`: Defines domain-specific exception classes (`ValidationError`, `StudentNotFoundError`, `CourseNotFoundError`, `DuplicateRecordError`, `AttendanceRecordError`, `InvalidScoreError`).
 - **`edutrack/cli/menu.py`**: Formats interactive terminal screens, tables, color escape sequences, and user input validation loops.
 - **`main.py` & `demo.py`**: Provide the primary interactive entry point and automated headless verification runner respectively.
@@ -442,7 +442,7 @@ Select an option [0-5]:
 ### 10.2 Student Academic Transcript & Weighted SGPA
 ```text
 ==========================================================================================
-ACADEMIC TRANSCRIPT: Aarav Sharma (24BCE1001)
+ACADEMIC TRANSCRIPT: Aarav Sharma (26BCE1001)
 Branch: BCE | Semester: 1 | Total Credits: 11
 ==========================================================================================
 Course     | Title                     | Cr  | Quiz  | Asgn  | Mid   | Fin   | Tot   | Att%   | Grd  | Status
@@ -458,7 +458,7 @@ SEMESTER GRADE POINT AVERAGE (SGPA): 9.36 / 10.00
 ### 10.3 Attendance Audit with Predictive Margin Advice
 ```text
 ================================================================================
-ATTENDANCE AUDIT FOR STUDENT: 24BCE1003 (Rohan Verma)
+ATTENDANCE AUDIT FOR STUDENT: 26BCE1003 (Rohan Verma)
 ================================================================================
 Course: CSE1001 | Attended: 20/30 (66.67%) | Status: DEBARRED (<75%)
   Advice: CRITICAL: Below 75%! Must attend next 10 consecutive class(es) to regain eligibility.
@@ -498,11 +498,11 @@ TOP PERFORMERS LEADERBOARD (DEAN'S HONOR ROLL)
 =================================================================
 Rank  | Reg No         | Name                   | Branch   | GPA  
 -----------------------------------------------------------------
-🥇 #1 | 24BCE1004      | Sneha Iyer             | BCE      | 9.77 
-🥈 #2 | 24BCE1001      | Aarav Sharma           | BCE      | 9.36 
-🥉 #3 | 24BCE1002      | Diya Patel             | BCE      | 7.50 
-#4    | 24BCE1005      | Vikram Nair            | BCE      | 4.60 
-#5    | 24BCE1099      | Karan Malhotra         | BCE      | 4.50 
+🥇 #1 | 26BCE1004      | Sneha Iyer             | BCE      | 9.77 
+🥈 #2 | 26BCE1001      | Aarav Sharma           | BCE      | 9.36 
+🥉 #3 | 26BCE1002      | Diya Patel             | BCE      | 7.50 
+#4    | 26BCE1005      | Vikram Nair            | BCE      | 4.60 
+#5    | 26BCE1099      | Karan Malhotra         | BCE      | 4.50 
 =================================================================
 ```
 
@@ -520,8 +520,8 @@ The project incorporates test-driven validation using Python's built-in `unittes
 | `test_models.py` | `test_course_creation_and_serialization` | Serialization & reconstruction | Unaltered attributes round-trip | **PASS** |
 | `test_models.py` | `test_course_record_attendance_and_grades` | Attendance $< 75\%$ debarment trigger | Grade overridden to F (Debarred), GP = 0 | **PASS** |
 | `test_models.py` | `test_student_gpa_calculation` | Multi-course credit-weighted SGPA | Exact formula calculation $(9.50)$ | **PASS** |
-| `test_validators.py` | `test_valid_reg_no` | Valid formats (`24bce1001`, `23BCSE045`) | Normalized uppercase string returned | **PASS** |
-| `test_validators.py` | `test_invalid_reg_no` | Malformed strings (`INVALID123`, `241001`) | `ValidationError` raised | **PASS** |
+| `test_validators.py` | `test_valid_reg_no` | Valid formats (`26bce1001`, `23BCSE045`) | Normalized uppercase string returned | **PASS** |
+| `test_validators.py` | `test_invalid_reg_no` | Malformed strings (`INVALID123`, `261001`) | `ValidationError` raised | **PASS** |
 | `test_validators.py` | `test_valid_email` | Standard university email addresses | Normalized lowercase email string | **PASS** |
 | `test_validators.py` | `test_invalid_email` | String lacking domain/tld (`not-an-email`) | `ValidationError` raised | **PASS** |
 | `test_validators.py` | `test_course_code_validation` | Valid vs short course codes (`CS1`) | `ValidationError` raised for short codes | **PASS** |
@@ -602,7 +602,7 @@ OK (100% Passing Rate)
 
 1. Lutz, Mark. *Learning Python: Powerful Object-Oriented Programming (5th Edition)*. O'Reilly Media, 2013.
 2. Python Software Foundation. *Python 3.12 Documentation: Standard Library (re, json, csv, unittest)*. https://docs.python.org/3/
-3. Vellore Institute of Technology. *Academic Regulations & Course Guidelines for B.Tech Degree Programs*. VIT University, 2024.
+3. Vellore Institute of Technology. *Academic Regulations & Course Guidelines for B.Tech Degree Programs*. VIT University, 2026.
 4. Gamma, Erich, et al. *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley, 1994.
 5. Martin, Robert C. *Clean Code: A Handbook of Agile Software Craftsmanship*. Prentice Hall, 2008.
 6. Fowler, Martin. *UML Distilled: A Brief Guide to the Standard Object Modeling Language (3rd Edition)*. Addison-Wesley, 2003.

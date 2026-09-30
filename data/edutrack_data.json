@@ -1,11 +1,11 @@
 {
   "students": {
-    "24BCE1001": {
+    "26BCE1001": {
       "name": "Aarav Sharma",
-      "email": "aarav.s2024@vitstudent.ac.in",
+      "email": "aarav.s2026@vitstudent.ac.in",
       "phone": "9876543210",
       "role": "Student",
-      "reg_no": "24BCE1001",
+      "reg_no": "26BCE1001",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -44,12 +44,12 @@
         }
       }
     },
-    "24BCE1002": {
+    "26BCE1002": {
       "name": "Diya Patel",
-      "email": "diya.p2024@vitstudent.ac.in",
+      "email": "diya.p2026@vitstudent.ac.in",
       "phone": "9876543211",
       "role": "Student",
-      "reg_no": "24BCE1002",
+      "reg_no": "26BCE1002",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -77,12 +77,12 @@
         }
       }
     },
-    "24BCE1003": {
+    "26BCE1003": {
       "name": "Rohan Verma",
-      "email": "rohan.v2024@vitstudent.ac.in",
+      "email": "rohan.v2026@vitstudent.ac.in",
       "phone": "9876543212",
       "role": "Student",
-      "reg_no": "24BCE1003",
+      "reg_no": "26BCE1003",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -110,12 +110,12 @@
         }
       }
     },
-    "24BCE1004": {
+    "26BCE1004": {
       "name": "Sneha Iyer",
-      "email": "sneha.i2024@vitstudent.ac.in",
+      "email": "sneha.i2026@vitstudent.ac.in",
       "phone": "9876543213",
       "role": "Student",
-      "reg_no": "24BCE1004",
+      "reg_no": "26BCE1004",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -165,12 +165,12 @@
         }
       }
     },
-    "24BCE1005": {
+    "26BCE1005": {
       "name": "Vikram Nair",
-      "email": "vikram.n2024@vitstudent.ac.in",
+      "email": "vikram.n2026@vitstudent.ac.in",
       "phone": "9876543214",
       "role": "Student",
-      "reg_no": "24BCE1005",
+      "reg_no": "26BCE1005",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -198,12 +198,12 @@
         }
       }
     },
-    "24BCE1099": {
+    "26BCE1099": {
       "name": "Karan Malhotra",
-      "email": "karan.m2024@vitstudent.ac.in",
+      "email": "karan.m2026@vitstudent.ac.in",
       "phone": "9876543299",
       "role": "Student",
-      "reg_no": "24BCE1099",
+      "reg_no": "26BCE1099",
       "branch": "BCE",
       "semester": 1,
       "courses": {
@@ -230,6 +230,16 @@
           }
         }
       }
+    },
+    "26BCE10166": {
+      "name": "anchal chauda",
+      "email": "anchalchauda134@gmail.com",
+      "phone": "9407549655",
+      "role": "Student",
+      "reg_no": "26BCE10166",
+      "branch": "1",
+      "semester": 1,
+      "courses": {}
     }
   },
   "courses": {

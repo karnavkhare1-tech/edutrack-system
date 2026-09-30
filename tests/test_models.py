@@ -44,7 +44,7 @@ class TestDomainModels(unittest.TestCase):
         self.assertEqual(rec.status, "DEBARRED")
 
     def test_student_gpa_calculation(self):
-        s = Student("24BCE1001", "Alice", "alice@vit.ac.in", "BCE", 1)
+        s = Student("26BCE1001", "Alice", "alice@vit.ac.in", "BCE", 1)
         s.enroll("CSE1001")
         s.enroll("MAT1001")
 

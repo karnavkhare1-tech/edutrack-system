@@ -9,7 +9,7 @@ from .exceptions import ValidationError
 
 
 def validate_reg_no(reg_no: str) -> str:
-    """Validate university registration number format (e.g., 24BCE1001).
+    """Validate university registration number format (e.g., 26BCE1001).
 
     Pattern: 2 digits (year) + 2 to 4 letters (dept) + 3 to 5 digits (roll).
     """
@@ -20,7 +20,7 @@ def validate_reg_no(reg_no: str) -> str:
     if not re.match(pattern, cleaned):
         raise ValidationError(
             f"Invalid Registration Number '{reg_no}'. "
-            "Expected format: 2 digits year + 2-4 branch letters + 3-5 digits (e.g., 24BCE1001)."
+            "Expected format: 2 digits year + 2-4 branch letters + 3-5 digits (e.g., 26BCE1001)."
         )
     return cleaned
 

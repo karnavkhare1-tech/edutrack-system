@@ -27,11 +27,11 @@ def run_demonstration():
     analytics_svc = AnalyticsService(s_seed, c_seed)
 
     # 3. Add a new First-Year Student
-    new_reg = "24BCE1099"
+    new_reg = "26BCE1099"
     new_student = student_svc.add_student(
         reg_no=new_reg,
         name="Karan Malhotra",
-        email="karan.m2024@vitstudent.ac.in",
+        email="karan.m2026@vitstudent.ac.in",
         branch="BCE",
         semester=1,
         phone="9876543299",

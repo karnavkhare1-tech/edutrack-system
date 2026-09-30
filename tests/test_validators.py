@@ -16,14 +16,14 @@ class TestValidators(unittest.TestCase):
     """Test suite for validators and sanitizers."""
 
     def test_valid_reg_no(self):
-        self.assertEqual(validate_reg_no("24bce1001"), "24BCE1001")
+        self.assertEqual(validate_reg_no("26bce1001"), "26BCE1001")
         self.assertEqual(validate_reg_no("23BCSE045"), "23BCSE045")
 
     def test_invalid_reg_no(self):
         with self.assertRaises(ValidationError):
             validate_reg_no("INVALID123")
         with self.assertRaises(ValidationError):
-            validate_reg_no("241001")
+            validate_reg_no("261001")
 
     def test_valid_email(self):
         self.assertEqual(validate_email("student@vit.ac.in"), "student@vit.ac.in")

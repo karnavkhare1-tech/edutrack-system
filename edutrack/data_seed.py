@@ -26,16 +26,16 @@ def generate_seed_data():
 
     # 3. Students
     students: Dict[str, Student] = {
-        "24BCE1001": Student("24BCE1001", "Aarav Sharma", "aarav.s2024@vitstudent.ac.in", "BCE", 1, "9876543210"),
-        "24BCE1002": Student("24BCE1002", "Diya Patel", "diya.p2024@vitstudent.ac.in", "BCE", 1, "9876543211"),
-        "24BCE1003": Student("24BCE1003", "Rohan Verma", "rohan.v2024@vitstudent.ac.in", "BCE", 1, "9876543212"),
-        "24BCE1004": Student("24BCE1004", "Sneha Iyer", "sneha.i2024@vitstudent.ac.in", "BCE", 1, "9876543213"),
-        "24BCE1005": Student("24BCE1005", "Vikram Nair", "vikram.n2024@vitstudent.ac.in", "BCE", 1, "9876543214"),
+        "26BCE1001": Student("26BCE1001", "Aarav Sharma", "aarav.s2026@vitstudent.ac.in", "BCE", 1, "9876543210"),
+        "26BCE1002": Student("26BCE1002", "Diya Patel", "diya.p2026@vitstudent.ac.in", "BCE", 1, "9876543211"),
+        "26BCE1003": Student("26BCE1003", "Rohan Verma", "rohan.v2026@vitstudent.ac.in", "BCE", 1, "9876543212"),
+        "26BCE1004": Student("26BCE1004", "Sneha Iyer", "sneha.i2026@vitstudent.ac.in", "BCE", 1, "9876543213"),
+        "26BCE1005": Student("26BCE1005", "Vikram Nair", "vikram.n2026@vitstudent.ac.in", "BCE", 1, "9876543214"),
     }
 
     # Setup Course Enrollments, Attendance & Marks
     # Student 1: High achiever
-    s1 = students["24BCE1001"]
+    s1 = students["26BCE1001"]
     for c in ["CSE1001", "MAT1001", "PHY1001"]:
         s1.enroll(c)
     s1.update_attendance("CSE1001", attended=28, total=30)  # 93.3%
@@ -46,7 +46,7 @@ def generate_seed_data():
     s1.update_marks("PHY1001", quiz=9.0, assignment=17.5, midterm=27.0, final=36.0) # Total 89.5 (A)
 
     # Student 2: Average with safe attendance
-    s2 = students["24BCE1002"]
+    s2 = students["26BCE1002"]
     for c in ["CSE1001", "MAT1001"]:
         s2.enroll(c)
     s2.update_attendance("CSE1001", attended=24, total=30)  # 80.0%
@@ -55,7 +55,7 @@ def generate_seed_data():
     s2.update_marks("MAT1001", quiz=6.5, assignment=14.0, midterm=20.0, final=28.0) # Total 68.5 (C)
 
     # Student 3: Low attendance (Debarred in CSE1001!)
-    s3 = students["24BCE1003"]
+    s3 = students["26BCE1003"]
     for c in ["CSE1001", "PHY1001"]:
         s3.enroll(c)
     s3.update_attendance("CSE1001", attended=20, total=30)  # 66.7% (<75% Debarred!)
@@ -64,7 +64,7 @@ def generate_seed_data():
     s3.update_marks("PHY1001", quiz=7.5, assignment=15.0, midterm=21.0, final=29.0)
 
     # Student 4: High performer
-    s4 = students["24BCE1004"]
+    s4 = students["26BCE1004"]
     for c in ["CSE1001", "MAT1001", "PHY1001", "ENG1001"]:
         s4.enroll(c)
     s4.update_attendance("CSE1001", attended=29, total=30)  # 96.7%
@@ -77,7 +77,7 @@ def generate_seed_data():
     s4.update_marks("ENG1001", quiz=9.0, assignment=18.5, midterm=28.0, final=37.0) # Total 92.5 (S)
 
     # Student 5: Near 75% boundary
-    s5 = students["24BCE1005"]
+    s5 = students["26BCE1005"]
     for c in ["MAT1001", "ENG1001"]:
         s5.enroll(c)
     s5.update_attendance("MAT1001", attended=22, total=30)  # 73.3% (<75% Debarred!)

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack — Academic Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">ET</div>
+    <div class="brand-text">
+      <span class="brand-name">EduTrack</span>
+      <span class="brand-version" id="app-version">v2.6.0</span>
+    </div>
+  </div>
+
+  <ul class="nav-list">
+    <li class="nav-item active" data-page="dashboard">
+      <span class="nav-icon">⊞</span><span>Dashboard</span>
+    </li>
+    <li class="nav-item" data-page="students">
+      <span class="nav-icon">👤</span><span>Students</span>
+    </li>
+    <li class="nav-item" data-page="courses">
+      <span class="nav-icon">📚</span><span>Courses</span>
+    </li>
+    <li class="nav-item" data-page="attendance">
+      <span class="nav-icon">✅</span><span>Attendance</span>
+    </li>
+    <li class="nav-item" data-page="marks">
+      <span class="nav-icon">📊</span><span>Marks & GPA</span>
+    </li>
+    <li class="nav-item" data-page="analytics">
+      <span class="nav-icon">🏆</span><span>Analytics</span>
+    </li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <button class="btn btn-outline btn-sm" id="export-btn">⬇ Export CSV</button>
+    <button class="btn btn-danger btn-sm" id="reset-btn">↺ Reset Data</button>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="main" id="main-content">
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ─ DASHBOARD ─ -->
+  <section class="page active" id="page-dashboard">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p class="page-subtitle">Academic overview at a glance</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card accent-blue">
+        <div class="stat-icon">👤</div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-students">—</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+      </div>
+      <div class="stat-card accent-purple">
+        <div class="stat-icon">📚</div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-courses">—</div>
+          <div class="stat-label">Active Courses</div>
+        </div>
+      </div>
+      <div class="stat-card accent-green">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-gpa">—</div>
+          <div class="stat-label">Average GPA</div>
+        </div>
+      </div>
+      <div class="stat-card accent-red">
+        <div class="stat-icon">⚠</div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-debarred">—</div>
+          <div class="stat-label">Debarred Enrollments</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-2col">
+      <!-- Leaderboard -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🏆 Dean's Honor Roll</h2>
+        </div>
+        <div class="card-body" id="leaderboard-list">
+          <div class="empty-state">Loading…</div>
+        </div>
+      </div>
+
+      <!-- Debarred Alert -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">⚠ Debarred Students</h2>
+        </div>
+        <div class="card-body" id="debarred-list">
+          <div class="empty-state">Loading…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─ STUDENTS ─ -->
+  <section class="page" id="page-students">
+    <div class="page-header">
+      <h1>Students</h1>
+      <button class="btn btn-primary" id="open-add-student-btn">+ Add Student</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header search-bar">
+        <input class="input" id="student-search" type="text" placeholder="Search by name or reg. no…" />
+      </div>
+      <div class="card-body">
+        <table class="table" id="students-table">
+          <thead>
+            <tr>
+              <th>Reg No</th><th>Name</th><th>Branch</th><th>Sem</th>
+              <th>Email</th><th>GPA</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─ COURSES ─ -->
+  <section class="page" id="page-courses">
+    <div class="page-header">
+      <h1>Courses</h1>
+      <button class="btn btn-primary" id="open-add-course-btn">+ Add Course</button>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <table class="table" id="courses-table">
+          <thead>
+            <tr>
+              <th>Code</th><th>Title</th><th>Credits</th><th>Faculty</th>
+              <th>Slot</th><th>Enrolled</th><th>Capacity</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="courses-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─ ATTENDANCE ─ -->
+  <section class="page" id="page-attendance">
+    <div class="page-header">
+      <h1>Attendance</h1>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="att-cumulative">Cumulative Log</button>
+      <button class="tab" data-tab="att-session">Session Roll-call</button>
+      <button class="tab" data-tab="att-audit">Student Audit</button>
+    </div>
+
+    <!-- Cumulative -->
+    <div class="tab-pane active" id="att-cumulative">
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">Log Cumulative Attendance</h2></div>
+        <div class="card-body">
+          <form id="attendance-form" class="form-grid">
+            <div class="form-group">
+              <label>Registration Number</label>
+              <input class="input" id="att-reg" type="text" placeholder="e.g. 26BCE1001" required />
+            </div>
+            <div class="form-group">
+              <label>Course Code</label>
+              <input class="input" id="att-course" type="text" placeholder="e.g. CSE1001" required />
+            </div>
+            <div class="form-group">
+              <label>Classes Attended</label>
+              <input class="input" id="att-attended" type="number" min="0" required />
+            </div>
+            <div class="form-group">
+              <label>Total Classes Conducted</label>
+              <input class="input" id="att-total" type="number" min="0" required />
+            </div>
+            <div class="form-group form-full">
+              <button type="submit" class="btn btn-primary">Update Attendance</button>
+            </div>
+          </form>
+          <div id="att-result" class="result-box hidden"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session Roll-call -->
+    <div class="tab-pane hidden" id="att-session">
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">Session Roll-call</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Select Course</label>
+            <select class="input" id="session-course"></select>
+          </div>
+          <button class="btn btn-secondary" id="load-session-btn">Load Enrolled Students</button>
+          <div id="session-student-list" class="session-list"></div>
+          <div class="form-group form-full" id="session-submit-wrap" style="display:none">
+            <button class="btn btn-primary" id="submit-session-btn">Submit Session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit -->
+    <div class="tab-pane hidden" id="att-audit">
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">Student Attendance Audit</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Registration Number</label>
+            <input class="input" id="audit-reg" type="text" placeholder="e.g. 26BCE1001" />
+            <button class="btn btn-primary mt-1" id="audit-btn">View Audit</button>
+          </div>
+          <div id="audit-result" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─ MARKS & GPA ─ -->
+  <section class="page" id="page-marks">
+    <div class="page-header">
+      <h1>Marks &amp; GPA</h1>
+    </div>
+
+    <div class="row-2col">
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">Enter Marks</h2></div>
+        <div class="card-body">
+          <form id="marks-form" class="form-grid">
+            <div class="form-group">
+              <label>Registration Number</label>
+              <input class="input" id="marks-reg" type="text" placeholder="26BCE1001" required />
+            </div>
+            <div class="form-group">
+              <label>Course Code</label>
+              <input class="input" id="marks-course" type="text" placeholder="CSE1001" required />
+            </div>
+            <div class="form-group">
+              <label>Quiz <span class="muted">(max 10)</span></label>
+              <input class="input" id="marks-quiz" type="number" step="0.5" min="0" max="10" />
+            </div>
+            <div class="form-group">
+              <label>Assignment <span class="muted">(max 20)</span></label>
+              <input class="input" id="marks-assignment" type="number" step="0.5" min="0" max="20" />
+            </div>
+            <div class="form-group">
+              <label>Midterm <span class="muted">(max 30)</span></label>
+              <input class="input" id="marks-midterm" type="number" step="0.5" min="0" max="30" />
+            </div>
+            <div class="form-group">
+              <label>Final Exam <span class="muted">(max 40)</span></label>
+              <input class="input" id="marks-final" type="number" step="0.5" min="0" max="40" />
+            </div>
+            <div class="form-group form-full">
+              <button type="submit" class="btn btn-primary">Save Marks</button>
+            </div>
+          </form>
+          <div id="marks-result" class="result-box hidden"></div>
+        </div>
+      </div>
+
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">View Transcript</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Registration Number</label>
+            <input class="input" id="transcript-reg" type="text" placeholder="26BCE1001" />
+            <button class="btn btn-primary mt-1" id="transcript-btn">Load Transcript</button>
+          </div>
+          <div id="transcript-result" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─ ANALYTICS ─ -->
+  <section class="page" id="page-analytics">
+    <div class="page-header">
+      <h1>Analytics</h1>
+    </div>
+
+    <div class="row-2col">
+      <div class="card form-card">
+        <div class="card-header"><h2 class="card-title">Course Analytics</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Course Code</label>
+            <select class="input" id="analytics-course-select"></select>
+            <button class="btn btn-primary mt-1" id="analytics-btn">Analyse</button>
+          </div>
+          <div id="analytics-result" class="mt-2"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2 class="card-title">🏆 Full Leaderboard</h2></div>
+        <div class="card-body" id="full-leaderboard"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── MODALS ─── -->
+
+<!-- Add Student Modal -->
+<div class="modal-overlay hidden" id="modal-add-student">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Register New Student</h2>
+      <button class="modal-close" data-modal="modal-add-student">✕</button>
+    </div>
+    <form id="add-student-form" class="form-grid">
+      <div class="form-group">
+        <label>Registration Number *</label>
+        <input class="input" id="ns-reg" type="text" placeholder="26BCE1001" required />
+      </div>
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input class="input" id="ns-name" type="text" placeholder="Aarav Sharma" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input class="input" id="ns-email" type="email" placeholder="aarav.s2026@vitstudent.ac.in" required />
+      </div>
+      <div class="form-group">
+        <label>Branch *</label>
+        <input class="input" id="ns-branch" type="text" placeholder="BCE" required />
+      </div>
+      <div class="form-group">
+        <label>Semester</label>
+        <input class="input" id="ns-semester" type="number" min="1" max="8" value="1" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input class="input" id="ns-phone" type="text" placeholder="9876543210" />
+      </div>
+      <div class="form-group form-full">
+        <button type="submit" class="btn btn-primary btn-block">Register Student</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add Course Modal -->
+<div class="modal-overlay hidden" id="modal-add-course">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Add New Course</h2>
+      <button class="modal-close" data-modal="modal-add-course">✕</button>
+    </div>
+    <form id="add-course-form" class="form-grid">
+      <div class="form-group">
+        <label>Course Code *</label>
+        <input class="input" id="nc-code" type="text" placeholder="CSE1002" required />
+      </div>
+      <div class="form-group">
+        <label>Course Title *</label>
+        <input class="input" id="nc-title" type="text" placeholder="Data Structures" required />
+      </div>
+      <div class="form-group">
+        <label>Credits (1–5)</label>
+        <input class="input" id="nc-credits" type="number" min="1" max="5" value="4" />
+      </div>
+      <div class="form-group">
+        <label>Faculty Name</label>
+        <input class="input" id="nc-faculty" type="text" placeholder="Dr. Ramesh Kumar" />
+      </div>
+      <div class="form-group">
+        <label>Time Slot</label>
+        <input class="input" id="nc-slot" type="text" placeholder="A1+TA1" />
+      </div>
+      <div class="form-group">
+        <label>Max Capacity</label>
+        <input class="input" id="nc-capacity" type="number" min="1" value="60" />
+      </div>
+      <div class="form-group form-full">
+        <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Student Modal -->
+<div class="modal-overlay hidden" id="modal-edit-student">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Edit Student</h2>
+      <button class="modal-close" data-modal="modal-edit-student">✕</button>
+    </div>
+    <form id="edit-student-form" class="form-grid">
+      <input type="hidden" id="es-reg" />
+      <div class="form-group">
+        <label>Full Name</label>
+        <input class="input" id="es-name" type="text" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="input" id="es-email" type="email" />
+      </div>
+      <div class="form-group">
+        <label>Branch</label>
+        <input class="input" id="es-branch" type="text" />
+      </div>
+      <div class="form-group">
+        <label>Semester</label>
+        <input class="input" id="es-semester" type="number" min="1" max="8" />
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input class="input" id="es-phone" type="text" />
+      </div>
+      <div class="form-group form-full">
+        <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+      </div>
+    </form>
+    <hr />
+    <div class="card-header"><h3 style="font-size:0.95rem;font-weight:600;">Enroll / Drop Course</h3></div>
+    <div class="form-grid" style="padding-top:0.5rem">
+      <div class="form-group">
+        <label>Course Code</label>
+        <input class="input" id="es-enroll-code" type="text" placeholder="CSE1001" />
+      </div>
+      <div class="form-group" style="display:flex;gap:0.5rem;align-items:flex-end">
+        <button class="btn btn-secondary" id="enroll-btn">Enroll</button>
+        <button class="btn btn-danger" id="drop-btn">Drop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

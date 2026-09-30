@@ -1,4 +1,5 @@
-"""EduTrack - Student Academic Performance & Attendance Monitoring System.
+1
+"""Student Academic Performance & Attendance Monitoring System.
 
 Main application entry point.
 """
