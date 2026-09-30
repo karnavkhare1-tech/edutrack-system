@@ -23,7 +23,7 @@ ACADEMIC YEAR:
 SUBMITTED BY:
                Student Name : Karnav Khare
                Registration : 26BMR10033 / Batch 2026-2030
-               Program      : B.Tech Mechanical Engineering in AI and Robotics (Mechatronics)
+               Program      : B.Tech Mechanical Engineering in AI and Robotics (Megatronics)
 
 SUPERVISOR / EVALUATOR:
                Faculty Name : Devendra Kumar Vedi
