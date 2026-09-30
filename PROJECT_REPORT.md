@@ -18,19 +18,17 @@ COURSE CODE & TITLE:
                CSE1001 - Problem Solving and Programming with Python
 
 ACADEMIC YEAR:
-               2025 - 2026 (Semester 1)
+               2026 - 2027 (Semester 1)
 
 SUBMITTED BY:
-               Student Name : First Year CSE Student
-               Registration : 26BCE1001 / Batch 2026-2030
-               Program      : B.Tech Computer Science and Engineering
+               Student Name : Karnav Khare
+               Registration : 26BMR10033 / Batch 2026-2030
+               Program      : B.Tech Mechatronics and Robotics Engineering
 
 SUPERVISOR / EVALUATOR:
-               Faculty Name : Course Faculty / Program Coordinator
+               Faculty Name : Devendra Kumar Vedi
                School       : SCOPE, VIT
 
-SUBMISSION DATE:
-               September 2026
 ==================================================================================================
 ```
 
